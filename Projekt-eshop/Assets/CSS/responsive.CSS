@@ -1,0 +1,12 @@
+@media (max-width: 768px) {
+
+    .nav {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .footer {
+        flex-direction: column;
+        text-align: center;
+    }
+}

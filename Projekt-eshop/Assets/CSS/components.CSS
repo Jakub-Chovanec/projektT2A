@@ -1,0 +1,61 @@
+/* Doporučené produkty */
+.recommended-products {
+    margin-bottom: 90px;
+}
+
+.products-r {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.product-r {
+    background: var(--white);
+    padding: 20px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+.recommended-img {
+    height: 150px;
+    object-fit: contain;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+/* Kategorie Produktů */
+.category-products {
+    margin-bottom: 40px;
+}
+
+.products-k {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.product-k {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 20px;
+    text-align: center;
+}
+
+.category-img {
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 10px;
+    margin-left: 70px;
+}
+
+/* Back to top */
+.back {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.back a {
+    font-size: 24px;
+}
