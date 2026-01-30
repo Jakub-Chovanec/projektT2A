@@ -3,7 +3,7 @@ body {
     grid-template-rows: auto 1fr auto;
 }
 
-/* HEADER */
+/* header */
 header {
     background: var(--white);
     box-shadow: var(--shadow);
@@ -22,7 +22,7 @@ header {
     width: 50px;
 }
 
-/* NAVIGACE */
+/* navigace */
 .nav {
     max-width: var(--max-width);
     margin: 20px auto;
@@ -42,14 +42,14 @@ header {
     color: aliceblue;
 }
 
-/* MAIN */
+/* main */
 .main {
     max-width: var(--max-width);
     margin: auto;
     padding: 20px;
 }
 
-/* FOOTER */
+/* footer */
 .footer {
     background: var(--dark-gray);
     color: var(--white);
