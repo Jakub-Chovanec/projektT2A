@@ -165,7 +165,7 @@
 .gallery-grid img {
     background: var(--white);
     margin-left: 20px;
-    height: 200px;
+    height: 150px;
     object-fit: contain;
     margin: 30px;
 }
