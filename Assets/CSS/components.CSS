@@ -48,7 +48,11 @@
     height: 100px;
     object-fit: contain;
     margin-bottom: 10px;
-    margin-left: 70px;
+    margin-left: 90px;
+    max-width: 120px;
+    height: auto;
+    display: block;
+    margin: auto;
 }
 
 /* Tlačítko nahoru  */
@@ -106,7 +110,7 @@
 
 /* DETAIL PRODUKTU */
 .product-detail {
-    display: grid;
+    display: flex;
     grid-template-columns: 1fr 1fr;
     gap: 40px;
     background: var(--white);
@@ -122,11 +126,15 @@
     margin: auto;
     padding-top: 80px;
     padding-right: 20px;
+    max-width: 100%;
+    height: auto;
 }
 
 .product-info {
     display: flex;
     flex-direction: column;
+    flex: 1;
+    min-width: 0;
 }
 
 .product-price {
@@ -153,13 +161,14 @@
     background: var(--white);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
+    flex: 1;
 }
 
 .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    display: flex;
     gap: 10px;
-    margin-top: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .gallery-grid img {

@@ -1,23 +1,79 @@
+
+/*MOBIL */
 @media (max-width: 768px) {
 
-    .nav {
-        flex-wrap: wrap;
-        gap: 15px;
+    /* HEADER */
+    .header {
+        flex-direction: column;
     }
 
+    .logo {
+        width: 80px;
+    }
+
+    /* NAVIGACE */
+    .nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    /* PRODUKTY GRID */
+    .products,
+    .products-r,
+    .products-k {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    /* DETAIL PRODUKTU */
+    .product-detail {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    /* OBRÁZKY PRODUKTŮ */
+    .product-img,
+    .recommended-img,
+    .category-img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* FOOTER */
     .footer {
         flex-direction: column;
         text-align: center;
+        gap: 20px;
     }
+
 }
 
-@media (max-width: 768px) {
+/*TABLET */
+@media (min-width: 769px) and (max-width: 1024px) {
 
+    /* GRID PRODUKTŮ */
+    .products,
+    .products-r,
+    .products-k {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+
+    /* DETAIL PRODUKTU */
     .product-detail {
-        grid-template-columns: 1fr;
+        gap: 30px;
     }
 
-    .gallery-grid {
-        grid-template-columns: repeat(3, 1fr);
+}
+
+
+/*DESKTOP */
+@media (min-width: 1400px) {
+
+    .main {
+        max-width: 1300px;
+        margin: auto;
     }
+
 }
