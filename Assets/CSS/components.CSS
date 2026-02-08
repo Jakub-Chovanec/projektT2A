@@ -231,6 +231,7 @@
     padding: 10px;
     margin-bottom: 15px;
     border-radius: 12px;
+    max-width: 900px;
 }
 
 .cart-item img {
@@ -297,6 +298,8 @@
     max-width: 680px;
     margin: 0 auto;
     padding: 40px 20px;
+    background-color: var(--white);
+    border-radius: var(--radius);
 }
 
 .checkout-form h3 {
