@@ -48,6 +48,15 @@
         width: 100%;
         text-align: center;
     }
+
+    .checkout-form {
+        grid-template-columns: 1fr;
+    }
+
+    .checkout-form h3,
+    .checkout-form label:has(input[type="radio"]) {
+        grid-column: span 1;
+    }
 }
 
 
