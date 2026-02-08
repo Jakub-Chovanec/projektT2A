@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doprava a platba</title>
+    <link rel="stylesheet" href="Assets/CSS/style.CSS">
+</head>
+<body>
+
+<header>
+    <section class="header">
+        <h1>FOTO-SHOP</h1>
+        <img class="logo" src="https://img.freepik.com/free-psd/camera-outline-logo-design_23-2151263987.jpg?semt=ais_hybrid&w=740&q=80" alt="logo">
+    </section>
+</header>
+
+<nav class="nav">
+    <a href="index.html">Domů</a>
+    <a href="index.html">Kategorie</a>
+    <a href="#">O nás</a>
+    <a href="košík-krok-1.html">Košík</a>
+</nav>
+
+<main>
+
+<!-- KROKY KOŠÍKU -->
+<section class="checkout-steps">
+    <div class="step">Košík</div>
+    <div class="step active">Doprava a platba</div>
+    <div class="step">Potvrzení</div>
+</section>
+
+<h2>Doprava a platba</h2>
+
+<section class="form">
+<form class="checkout-form">
+
+    <h3>Kontaktní údaje</h3>
+
+    <label>
+        Jméno
+        <input type="text" placeholder="Jan" required>
+    </label>
+
+    <label>
+        Příjmení
+        <input type="text" placeholder="Novák" required>
+    </label>
+
+    <label>
+        E-mail
+        <input type="email" placeholder="jan@email.cz" required>
+    </label>
+
+    <label>
+        Telefon
+        <input type="text" placeholder="+420 123 456 789" required>
+    </label>
+
+    <h3>Doprava</h3>
+
+    <label>
+        <input type="radio" name="doprava">
+        Zásilkovna – 79 Kč
+    </label>
+
+    <label>
+        <input type="radio" name="doprava">
+        Kurýr – 129 Kč
+    </label>
+
+
+    <h3>Platba</h3>
+
+    <label>
+        <input type="radio" name="platba">
+        Kartou online
+    </label>
+
+    <label>
+        <input type="radio" name="platba">
+        Dobírka
+    </label>
+
+</form>
+</section>
+
+<a href="košík-krok-3.html" class="btn-next">
+        Pokračovat →
+    </a>
+
+</main>
+
+<footer class="footer">
+
+        <section class="footer-info">
+            <h3>Foto-SHOP</h3>
+            <p>Školní projekt – eshop s fotoaparáty a příslušenstvím</p>
+            <p>Autor: Jakub Chovanec</p>
+        </section>
+
+        <section class="footer-contact">
+            <h3>Kontakt</h3>
+            <p>E-mail: info@fotojb.cz</p>
+            <p>Telefon: +420 123 456 789</p>
+        </section>
+    </footer>
+
+</body>
+</html>

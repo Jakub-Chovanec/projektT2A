@@ -25,6 +25,32 @@
         gap: 30px;
     }
 
+    .cart-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .cart-info {
+        flex: unset;
+    }
+    .cart-total{
+        text-align: center;
+    }
+
+    .cart-price {
+        margin-left: 0;
+        padding-right: 0;
+        font-size: 20px;
+    }
+
+    .btn-next {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+
     /* DETAIL PRODUKTU */
     .product-detail {
         flex-direction: column;
@@ -46,7 +72,6 @@
         gap: 20px;
     }
 
-}
 
 /*TABLET */
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -62,6 +87,15 @@
     /* DETAIL PRODUKTU */
     .product-detail {
         gap: 30px;
+    }
+
+    main {
+        max-width: 1024px;
+    }
+
+    .cart-item img {
+        width: 80px;
+        height: 80px;
     }
 
 }

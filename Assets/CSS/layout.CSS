@@ -19,7 +19,8 @@ header {
     margin: auto;
     padding: 16px;
     display: flex;
-    align-items: center;
+    align-items: self-start;
+    margin-left: 20px;
     gap: 12px;
 }
 
