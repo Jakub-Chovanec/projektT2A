@@ -391,7 +391,8 @@
     margin: auto;
     border-radius: var(--radius);
     font-weight: bold;
-    transition: 0.2s;
+    transition: 0.3s;
+    margin-bottom: 10px;
 }
 
 .back:hover{
