@@ -1,13 +1,16 @@
 <?php
 declare(strict_types=1);
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 require_once __DIR__ . '/src/bootstrap.php';
 
-$cart = new Cart();
-$cartItemCount = $cart->getTotalQuantity();
+//$cart = new Cart();
+//$cartItemCount = $cart->getTotalQuantity();
 ?>
 
-<?php require __DIR__ . '/partials/header.php'; ?>
+<?php require __DIR__ . '/Partials/header.php'; ?>
 
     
     <main class="main">
