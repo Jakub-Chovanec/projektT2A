@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="Assets/CSS/style.CSS">
-</head>
-<body>
+<?php
+declare(strict_types=1);
+
+require __DIR__ . '/src/bootstrap.php';
+?>
+
+<?php require __DIR__ . '/partials/header.php'; ?>
+
     <section class="form2">
         <div class="podekovani">
             <h3>Děkujeme za vaši objednávku!</h3>
@@ -19,5 +18,3 @@
     </section>
 
     <a class="back" href="index.html">Zpět na přehled</a>
-</body>
-</html>

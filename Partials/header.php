@@ -15,10 +15,10 @@
 </header>
 
 <nav class="nav">
-    <a href="index.html">Domů</a>
-    <a href="kontakt.html">Kontakt</a>
-    <a href="O-nas.html">O nás</a>
-    <a href="košík-krok-1.html">Košík</a>
+    <a href="index.php">Domů</a>
+    <a href="kontakt.php">Kontakt</a>
+    <a href="O-nas.php">O nás</a>
+    <a href="košík-krok-1.php">Košík</a>
 </nav>
 </body>
 </html>
