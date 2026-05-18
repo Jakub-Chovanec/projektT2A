@@ -38,9 +38,9 @@ require __DIR__ . '/src/bootstrap.php';
 </div>
 </section>
 
-<a href="kosik-final.html" class="btn-next">
+<a href="kosik-final.php" class="btn-next">
     Potvrdit objednávku
-</button>
+</a>
 
 </main>
 

@@ -16,7 +16,7 @@ require __DIR__ . '/src/bootstrap.php';
             <div class="products">
                 
                 <article class="product">
-                    <a href="Canon RF-S detail.html" class="product-odkaz">
+                    <a href="produkt.php?id=10" class="product-odkaz"> <!-- Předpokládám ID 10 pro Canon RF-S, pokud ho přidáš do DB -->
 
                         <img class="product-img" src="Assets/images/Canon RF-S 18-150mm.webp" alt="Sony ZV-E10-product">
                         <h4 class="procuct-name">Canon RF-S 18-150mm f/3,5-6,3 IS STM</h4>
@@ -25,7 +25,7 @@ require __DIR__ . '/src/bootstrap.php';
                 </article>
 
                 <article class="product">
-                    <a href="Canon EF 50mm detail.html" class="product-odkaz">
+                    <a href="produkt.php?id=11" class="product-odkaz"> <!-- Předpokládám ID 11 pro Canon EF 50mm, pokud ho přidáš do DB -->
 
                         <img class="product-img" src="Assets/images/Canon EF 50mmwebp.webp" alt="Sony ZV-E10-product">
                         <h4 class="procuct-name">Canon EF 50mm f/1.8 STM</h4>
@@ -34,7 +34,7 @@ require __DIR__ . '/src/bootstrap.php';
                 </article>
 
                 <article class="product">
-                    <a href="Canon RF 16 mm detail.html" class="product-odkaz">
+                    <a href="produkt.php?id=12" class="product-odkaz"> <!-- Předpokládám ID 12 pro Canon RF 16mm, pokud ho přidáš do DB -->
 
                         <img class="product-img" src="Assets/images/Canon RF 16 mm.webp" alt="Sony ZV-E10-product">
                         <h4 class="procuct-name">Canon RF 16 mm F2.8 STM</h4>
@@ -45,5 +45,6 @@ require __DIR__ . '/src/bootstrap.php';
             </div>
 
         </section>
+    </main>
 
        <?php require __DIR__ . '/partials/footer.php'; ?>

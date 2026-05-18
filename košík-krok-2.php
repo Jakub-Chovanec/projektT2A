@@ -70,7 +70,7 @@ require __DIR__ . '/src/bootstrap.php';
 </form>
 </section>
 
-<a href="košík-krok-3.html" class="btn-next">
+<a href="košík-krok-3.php" class="btn-next">
         Pokračovat →
     </a>
 

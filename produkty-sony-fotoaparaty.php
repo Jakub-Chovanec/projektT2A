@@ -16,7 +16,7 @@ require __DIR__ . '/src/bootstrap.php';
             <div class="products">
                 
                 <article class="product">
-                    <a href="Sony ZV-E10 detail.html" class="product-odkaz">
+                    <a href="produkt.php?id=2" class="product-odkaz"> <!-- ID 2 je Sony ZV-E10 z init.php -->
 
                         <img class="product-img" src="Assets/images/Sony Alpha ZV-E10.webp" alt="Sony ZV-E10-product">
                         <h4 class="procuct-name">Sony Alpha ZV-E10 vlogovací fotoaparát + 16–50 mm f/3,5–5,6 OSS II</h4>
@@ -25,7 +25,7 @@ require __DIR__ . '/src/bootstrap.php';
                 </article>
 
                 <article class="product">
-                    <a href="Sony Alpha A7 IV detail.html" class="product-odkaz">
+                    <a href="produkt.php?id=1" class="product-odkaz"> <!-- ID 1 je Sony Alpha A7 IV z init.php -->
 
                         <img class="product-img" src="Assets/images/OS170b.webp" alt="Sony ZV-E10-product">
                         <h4 class="procuct-name">Sony Alpha A7 IV + FE 28–70 mm F3,5–5,6 OSS</h4>
@@ -34,7 +34,7 @@ require __DIR__ . '/src/bootstrap.php';
                 </article>
 
                 <article class="product">
-                    <a href="Sony Alpha A7C II detail.html" class="product-odkaz">
+                    <a href="produkt.php?id=7" class="product-odkaz"> <!-- Předpokládám ID 7 pro Sony Alpha A7C II, pokud ho přidáš do DB -->
 
                         <img class="product-img" src="Assets/images/Sony Alpha A7C II stříbrný.webp" alt="Sony ZV-E10-product">
                         <h4 class="procuct-name">Sony Alpha A7C II stříbrný</h4>

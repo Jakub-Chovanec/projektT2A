@@ -17,7 +17,7 @@ require __DIR__ . '/src/bootstrap.php';
             <div class="products">
                 
                 <article class="product">
-                    <a href="Canon EOS 250D detail.html" class="product-odkaz">
+                    <a href="produkt.php?id=4" class="product-odkaz"> <!-- ID 4 je Canon EOS 250D z init.php -->
 
                         <img class="product-img" src="Assets/images/Canon EOS 250D černý.webp" alt="Canon EOS 250D-product">
                         <h4 class="procuct-name">Canon EOS 250D černý + EF-S 18–55 mm f/4–5,6 IS STM</h4>
@@ -26,7 +26,7 @@ require __DIR__ . '/src/bootstrap.php';
                 </article>
 
                 <article class="product">
-                    <a href="Canon EOS R6 Mark III detail.html" class="product-odkaz">
+                    <a href="produkt.php?id=5" class="product-odkaz"> <!-- Předpokládám ID 5 pro Canon EOS R6 Mark III, pokud ho přidáš do DB -->
 
                         <img class="product-img" src="Assets/images/Canon EOS R6 Mark III.webp" alt="Canon EOS R6 Mark III-product">
                         <h4 class="procuct-name">Canon EOS R6 Mark III + RF 24-105 mm f/4-7.1 IS STM</h4>
@@ -35,7 +35,7 @@ require __DIR__ . '/src/bootstrap.php';
                 </article>
 
                 <article class="product">
-                    <a href="Canon EOS RP detail.html" class="product-odkaz">
+                    <a href="produkt.php?id=6" class="product-odkaz"> <!-- Předpokládám ID 6 pro Canon EOS RP, pokud ho přidáš do DB -->
 
                         <img class="product-img" src="Assets/images/Canon EOS RP.webp" alt="Canon EOS RP-product">
                         <h4 class="procuct-name">Canon EOS RP + RF 24-105 mm f/4.0-7.1 IS STM</h4>

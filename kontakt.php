@@ -26,6 +26,6 @@ require __DIR__ . '/src/bootstrap.php';
     </div>
     
 </main>
-<a class="back" href="index.html">Zpět na přehled</a>
+<a class="back" href="index.php">Zpět na přehled</a>
 
 <?php require __DIR__ . '/partials/footer.php'; ?>

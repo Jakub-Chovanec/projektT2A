@@ -17,4 +17,4 @@ require __DIR__ . '/src/bootstrap.php';
         </div>
     </section>
 
-    <a class="back" href="index.html">Zpět na přehled</a>
+    <a class="back" href="index.php">Zpět na přehled</a>

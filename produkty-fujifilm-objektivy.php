@@ -16,7 +16,7 @@ require __DIR__ . '/src/bootstrap.php';
             <div class="products">
                 
                 <article class="product">
-                    <a href="Fujifilm Fujinon XF 16-50mm detail.html" class="product-odkaz">
+                    <a href="produkt.php?id=16" class="product-odkaz"> <!-- Předpokládám ID 16 pro Fujifilm Fujinon XF 16-50mm, pokud ho přidáš do DB -->
 
                         <img class="product-img" src="Assets/images/fujifilm fujinon XF.webp" alt="fujifilm fujinon-product">
                         <h4 class="procuct-name">Fujifilm Fujinon XF 16-50mm f/2.8-4.8 R LM WR</h4>
@@ -25,7 +25,7 @@ require __DIR__ . '/src/bootstrap.php';
                 </article>
 
                 <article class="product">
-                    <a href="Fujifilm Fujinon XF 50mm detail.html" class="product-odkaz">
+                    <a href="produkt.php?id=17" class="product-odkaz"> <!-- Předpokládám ID 17 pro Fujifilm Fujinon XF 50mm, pokud ho přidáš do DB -->
 
                         <img class="product-img" src="Assets/images/Funijon XF 50mm.webp" alt="Fujinon XF 50mm-product">
                         <h4 class="procuct-name">Fujifilm Fujinon XF 50mm f/2.0 R WR Black</h4>
@@ -34,7 +34,7 @@ require __DIR__ . '/src/bootstrap.php';
                 </article>
 
                 <article class="product">
-                    <a href="Fujifilm Fujinon XF 55-200mm detail.html" class="product-odkaz">
+                    <a href="produkt.php?id=18" class="product-odkaz"> <!-- Předpokládám ID 18 pro Fujifilm Fujinon XF 55-200mm, pokud ho přidáš do DB -->
 
                         <img class="product-img" src="Assets/images/Fujinon XF 55-200mm.webp" alt="Fujinon XF 55-200mm">
                         <h4 class="procuct-name">Fujifilm Fujinon XF 55-200mm F/3.5-4.8</h4>
@@ -45,5 +45,6 @@ require __DIR__ . '/src/bootstrap.php';
             </div>
 
         </section>
+    </main>
 
         <?php require __DIR__ . '/partials/footer.php'; ?>

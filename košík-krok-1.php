@@ -52,7 +52,7 @@ require __DIR__ . '/src/bootstrap.php';
 </div>
 </section>
 
-<a href="košík-krok-2.html" class="btn-next">
+<a href="košík-krok-2.php" class="btn-next">
     Pokračovat →
 </a>
 

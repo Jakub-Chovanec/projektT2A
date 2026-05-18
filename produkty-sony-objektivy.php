@@ -16,7 +16,7 @@ require __DIR__ . '/src/bootstrap.php';
             <div class="products">
                 
                 <article class="product">
-                    <a href="Sony 18-105 mm detail.html" class="product-odkaz">
+                    <a href="produkt.php?id=13" class="product-odkaz"> <!-- Předpokládám ID 13 pro Sony 18-105mm, pokud ho přidáš do DB -->
 
                         <img class="product-img" src="Assets/images/Sony 18-105 mm .webp" alt="Sony 18-105 mm-product">
                         <h4 class="procuct-name">Sony 18-105 mm f/4.0 G SEL</h4>
@@ -25,7 +25,7 @@ require __DIR__ . '/src/bootstrap.php';
                 </article>
 
                 <article class="product">
-                    <a href="Sony FE 35mm detail.html" class="product-odkaz">
+                    <a href="produkt.php?id=14" class="product-odkaz"> <!-- Předpokládám ID 14 pro Sony FE 35mm, pokud ho přidáš do DB -->
 
                         <img class="product-img" src="Assets/images/Sony FE 35 mm .webp" alt="Sony FE 35 mm-product">
                         <h4 class="procuct-name">Sony FE 35mm f/1.8</h4>
@@ -34,7 +34,7 @@ require __DIR__ . '/src/bootstrap.php';
                 </article>
 
                 <article class="product">
-                    <a href="Samyang AF 14mm detail.html" class="product-odkaz">
+                    <a href="produkt.php?id=15" class="product-odkaz"> <!-- Předpokládám ID 15 pro Samyang AF 14mm, pokud ho přidáš do DB -->
 
                         <img class="product-img" src="Assets/images/Samyang AF 14 mm.webp" alt="Sony Samyang-product">
                         <h4 class="procuct-name">Samyang AF 14mm f/2.8 Sony FE</h4>

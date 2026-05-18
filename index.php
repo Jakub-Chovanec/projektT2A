@@ -5,12 +5,14 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 require_once __DIR__ . '/src/bootstrap.php';
+require_once __DIR__ . '/src/repository/ProductRepository.php';
 
-//$cart = new Cart();
-//$cartItemCount = $cart->getTotalQuantity();
+// Vytvoříme si pomocníka pro produkty a řekneme mu, ať nám dá všechny produkty
+$productRepository = new ProductRepository($pdo);
+$products = $productRepository->getAll();
 ?>
 
-<?php require __DIR__ . '/Partials/header.php'; ?>
+<?php require __DIR__ . '/partials/header.php'; ?>
 
     
     <main class="main">
@@ -20,33 +22,15 @@ require_once __DIR__ . '/src/bootstrap.php';
 
         <div class="products-r">
 
-        <article class="product-r">
-            <a href="Sony Alpha A7 IV detail.php" class="recommended-text">
-            <img class="recommended-img" src="Assets/images/OS170b.webp" alt="Sony Alpha A7 IV + FE 28–70 mm">
-            Sony Alpha A7 IV + FE 28–70 mm F3,5–5,6 OSS
-            </a>
-        </article>
-
-        <article class="product-r">
-            <a href="Sony ZV-E10 detail.php" class="recommended-text">
-            <img class="recommended-img" src="Assets/images/Sony Alpha ZV-E10.webp" alt="Sony Alpha ZV-E10">
-                Sony Alpha ZV-E10 vlogovací fotoaparát + 16–50 mm f/3,5–5,6 OSS II
-            </a>
-        </article>
-
-        <article class="product-r">
-            <a href="Fujifilm X100VI Silver detail.php" class="recommended-text">
-            <img class="recommended-img" src="Assets/images/FujiFilm X100VI Silver.webp" alt="Fujifilm X100VI Silver">
-                Fujifilm X100VI Silver
-            </a>
-        </article>
-
-        <article class="product-r">
-            <a href="Canon EOS 250D detail.php" class="recommended-text">
-            <img class="recommended-img" src="Assets/images/Canon EOS 250D černý.webp" alt="Canon EOS 250D černý">
-                Canon EOS 250D černý + EF-S 18–55 mm f/4–5,6 IS STM
-            </a>
-        </article>
+        <?php foreach ($products as $product): ?>
+            <article class="product-r">
+                <!-- Odkaz zatím směřujeme na produkt.php, který vytvoříme později -->
+                <a href="produkt.php?id=<?= htmlspecialchars((string)$product->id) ?>" class="recommended-text">
+                    <img class="recommended-img" src="<?= htmlspecialchars($product->image) ?>" alt="<?= htmlspecialchars($product->name) ?>">
+                    <?= htmlspecialchars($product->name) ?>
+                </a>
+            </article>
+        <?php endforeach; ?>
 
         </div>
     </section>

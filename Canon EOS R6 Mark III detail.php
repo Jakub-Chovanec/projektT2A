@@ -41,7 +41,7 @@ require __DIR__ . '/src/bootstrap.php';
             <p class="product-price">84 490,-</p>
 
 
-            <a href="košík-krok-1.html" class="cart">
+            <a href="košík-krok-1.php" class="cart">
                 Přidat do košíku
             </a>
         </div>
