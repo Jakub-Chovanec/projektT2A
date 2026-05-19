@@ -39,25 +39,26 @@ if ($product === null) {
             <img src="<?= htmlspecialchars($product->image) ?>" alt="<?= htmlspecialchars($product->name) ?>">
         </div>
 
-        <div class="product-info">
+        <div class="product-info"> <!-- Opraveno ze section na div -->
             <h2><?= htmlspecialchars($product->name) ?></h2>
 
             <section class="product-description">
                 <h3>Popis produktu</h3>
-                <p>
-                    <!-- Zde by byl dynamický popis produktu z databáze -->
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
+                <p><?= htmlspecialchars($product->description) ?></p>
             </section>
             <br>
             <br>
 
             <ul class="product-specs">
-                <!-- Zde by byly dynamické specifikace produktu z databáze -->
-                <li>ID produktu: <?= htmlspecialchars((string)$product->id) ?></li>
-                <li>Cena: <?= htmlspecialchars(number_format($product->price, 0, ',', ' ')) ?>,- Kč</li>
-                <li>Dostupnost: Skladem</li>
+                <?php 
+                // Pokud máme specifikace oddělené středníkem, vypíšeme je jako seznam
+                if (!empty($product->specs)) {
+                    $specs = explode(';', $product->specs);
+                    foreach ($specs as $spec) {
+                        echo "<li>" . htmlspecialchars(trim($spec)) . "</li>";
+                    }
+                }
+                ?>
             </ul>
             <br>
             <br>
@@ -71,7 +72,18 @@ if ($product === null) {
 
     </section>
 
-    <!-- Zde by mohla být sekce pro galerii obrázků, pokud bys ji měl v DB -->
+    <?php if (!empty($product->gallery)): ?>
+    <section class="product-gallery">
+        <div class="gallery-grid">
+            <?php 
+            $galleryImages = explode(';', $product->gallery);
+            foreach ($galleryImages as $index => $imageUrl): 
+            ?>
+                <img src="<?= htmlspecialchars(trim($imageUrl)) ?>" alt="<?= htmlspecialchars($product->name) ?> – detail <?= $index + 1 ?>">
+            <?php endforeach; ?>
+        </div>
+    </section>
+    <?php endif; ?>
 
 </main>
 

@@ -9,7 +9,7 @@ require_once __DIR__ . '/src/repository/ProductRepository.php';
 
 // Vytvoříme si pomocníka pro produkty a řekneme mu, ať nám dá všechny produkty
 $productRepository = new ProductRepository($pdo);
-$products = $productRepository->getAll();
+$products = $productRepository->getFeatured(4); // Načte jen 4 produkty pro úvodní stranu
 ?>
 
 <?php require __DIR__ . '/partials/header.php'; ?>
