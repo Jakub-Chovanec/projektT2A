@@ -68,4 +68,35 @@ class ProductRepository {
         }
         return $products;
     }
+
+    /**
+     * Vrátí produkty podle kategorie a volitelně i značky (hledá značku v názvu)
+     */
+    public function getByCategory(int $categoryId, ?string $brand = null): array {
+        $sql = "SELECT * FROM products WHERE category_id = :category_id";
+        $params = [':category_id' => $categoryId];
+
+        if ($brand) {
+            $sql .= " AND name LIKE :brand";
+            $params[':brand'] = '%' . $brand . '%'; // Hledá značku kdekoli v názvu
+        }
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute($params);
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $products = [];
+        foreach ($data as $row) {
+            $products[] = new ProductDTO(
+                (int)$row['id'],
+                $row['name'],
+                (int)$row['price'],
+                $row['image'],
+                $row['description'] ?? '',
+                $row['specs'] ?? '',
+                $row['gallery'] ?? ''
+            );
+        }
+        return $products;
+    }
 }
