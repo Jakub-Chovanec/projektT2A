@@ -1,6 +1,6 @@
 <?php /** @var ProductDTO $product */ ?>
 <article class="product">
-    <a href="produkt.php?id=<?= $product->id ?>" class="product-odkaz">
+    <a href="produkt.php?slug=<?= htmlspecialchars($product->slug) ?>" class="product-odkaz">
         <img class="product-img" src="<?= htmlspecialchars($product->image) ?>" alt="<?= htmlspecialchars($product->name) ?>">
         <h4 class="product-name"><?= htmlspecialchars($product->name) ?></h4>
     </a>

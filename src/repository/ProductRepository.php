@@ -14,6 +14,7 @@ class ProductRepository {
         foreach ($data as $row) {
             $products[] = new ProductDTO(
                 (int)$row['id'],
+                $row['slug'],
                 $row['name'],
                 (int)$row['price'],
                 $row['image'],
@@ -23,6 +24,27 @@ class ProductRepository {
             );
         }
         return $products;
+    }
+
+    public function getBySlug(string $slug): ?ProductDTO {
+        $stmt = $this->pdo->prepare("SELECT * FROM products WHERE slug = :slug");
+        $stmt->execute([':slug' => $slug]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$row) {
+            return null;
+        }
+
+        return new ProductDTO(
+            (int)$row['id'],
+            $row['slug'],
+            $row['name'],
+            (int)$row['price'],
+            $row['image'],
+            $row['description'] ?? '',
+            $row['specs'] ?? '',
+            $row['gallery'] ?? ''
+        );
     }
 
     public function getById(int $id): ?ProductDTO {
@@ -36,6 +58,7 @@ class ProductRepository {
 
         return new ProductDTO(
             (int)$row['id'],
+            $row['slug'],
             $row['name'],
             (int)$row['price'],
             $row['image'],
@@ -58,6 +81,7 @@ class ProductRepository {
         foreach ($data as $row) {
             $products[] = new ProductDTO(
                 (int)$row['id'],
+                $row['slug'],
                 $row['name'],
                 (int)$row['price'],
                 $row['image'],
@@ -89,6 +113,7 @@ class ProductRepository {
         foreach ($data as $row) {
             $products[] = new ProductDTO(
                 (int)$row['id'],
+                $row['slug'],
                 $row['name'],
                 (int)$row['price'],
                 $row['image'],

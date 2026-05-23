@@ -6,6 +6,7 @@ class ProductDTO {
     // Tím, že před proměnné napíšeme "public", říkáme PHP, že to jsou ty vlastnosti (kolonky).
     public function __construct(
         public int $id,
+        public string $slug,
         public string $name,
         public int $price,
         public string $image,

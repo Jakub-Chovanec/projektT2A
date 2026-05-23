@@ -18,7 +18,10 @@
     <a href="index.php">Domů</a>
     <a href="kontakt.php">Kontakt</a>
     <a href="O-nas.php">O nás</a>
-    <a href="košík-krok-1.php">Košík</a>
+    <a href="kosik.php" class="nav-link-kosik">
+    Košík (<?= $cart->getTotalCount() ?>)
+</a>
+
 </nav>
 </body>
 </html>

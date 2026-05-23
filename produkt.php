@@ -4,18 +4,18 @@ declare(strict_types=1);
 require __DIR__ . '/src/bootstrap.php';
 require_once __DIR__ . '/src/repository/ProductRepository.php';
 
-// Získání ID produktu z URL parametru
-$productId = (int)($_GET['id'] ?? 0);
+// Získání slug produktu z URL parametru
+$slug = $_GET['slug'] ?? '';
 
-// Pokud ID není platné (např. 0 nebo není v URL), přesměrujeme na 404
-if ($productId === 0) {
+// Pokud slug chybí, přesměrujeme na 404
+if (empty($slug)) {
     header('Location: 404.php'); // Předpokládáme, že 404.php existuje
     exit();
 }
 
 // Načtení produktu z databáze
 $productRepository = new ProductRepository($pdo);
-$product = $productRepository->getById($productId);
+$product = $productRepository->getBySlug($slug);
 
 // Pokud produkt nebyl nalezen, přesměrujeme na 404
 if ($product === null) {
@@ -65,9 +65,11 @@ if ($product === null) {
 
             <p class="product-price"><?= htmlspecialchars(number_format($product->price, 0, ',', ' ')) ?>,- Kč</p>
 
-            <a href="košík-krok-1.php?add=<?= $product->id ?>" class="cart">
-                Přidat do košíku
-            </a>
+            <form action="kosik.php" method="POST" class="add-to-cart-form">
+                <input type="hidden" name="action" value="add">
+                <input type="hidden" name="product_id" value="<?= $product->id ?>">
+                <button type="submit" class="cart">Přidat do košíku</button>
+            </form>
         </div>
 
     </section>

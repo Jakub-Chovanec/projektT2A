@@ -26,7 +26,7 @@ $brands = [
 <main class="main">
     <section class="category-products">
         <h2 class="main-category-title">Značky pro <?= htmlspecialchars($category->name) ?></h2>
-        <div class="products-k" style="display: flex; justify-content: center; gap: 30px;">
+        <div class="products-k flex-center">
             <?php foreach ($brands as $brand): ?>
                 <article class="product-k">
                     <a href="produkty.php?slug=<?= htmlspecialchars($category->slug) ?>&brand=<?= htmlspecialchars($brand['name']) ?>" class="category-odkaz">
@@ -38,7 +38,7 @@ $brands = [
         </div>
     </section>
 
-    <div style="text-align: center; margin-top: 2rem;">
+    <div class="centered-content mt-2">
         <a href="index.php" class="back">← Zpět na výběr kategorie</a>
     </div>
 </main>

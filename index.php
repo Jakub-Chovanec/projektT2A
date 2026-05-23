@@ -28,8 +28,7 @@ $categories = $categoryRepository->getAll();
 
         <?php foreach ($products as $product): ?>
             <article class="product-r">
-                <!-- Odkaz zatím směřujeme na produkt.php, který vytvoříme později -->
-                <a href="produkt.php?id=<?= htmlspecialchars((string)$product->id) ?>" class="recommended-text">
+                <a href="produkt.php?slug=<?= htmlspecialchars($product->slug) ?>" class="recommended-text">
                     <img class="recommended-img" src="<?= htmlspecialchars($product->image) ?>" alt="<?= htmlspecialchars($product->name) ?>">
                     <?= htmlspecialchars($product->name) ?>
                 </a>
