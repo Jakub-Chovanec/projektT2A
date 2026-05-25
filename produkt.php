@@ -61,13 +61,33 @@ if ($product === null) {
                 ?>
             </ul>
             <br>
-            <br>
+
+            <div class="product-variants" style="margin-bottom: 20px;">
+                <label for="variant" style="display: block; margin-bottom: 8px; font-weight: bold;">Vyberte variantu:</label>
+                <select name="variant" id="variant" style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-family: inherit; cursor: pointer;">
+                    <option value="basic">Základní balení</option>
+                    <option value="premium">Premium set s brašnou (+ 2 000 Kč)</option>
+                </select>
+            </div>
 
             <p class="product-price"><?= htmlspecialchars(number_format($product->price, 0, ',', ' ')) ?>,- Kč</p>
 
             <form action="kosik.php" method="POST" class="add-to-cart-form">
                 <input type="hidden" name="action" value="add">
                 <input type="hidden" name="product_id" value="<?= $product->id ?>">
+                <script>
+                    // Synchronizace varianty do skrytého pole formuláře při změně selectu
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const sel = document.getElementById('variant');
+                        const form = document.querySelector('.add-to-cart-form');
+                        const input = document.createElement('input');
+                        input.type = 'hidden';
+                        input.name = 'variant';
+                        input.value = sel.value;
+                        form.appendChild(input);
+                        sel.addEventListener('change', () => { input.value = sel.value; });
+                    });
+                </script>
                 <button type="submit" class="cart">Přidat do košíku</button>
             </form>
         </div>

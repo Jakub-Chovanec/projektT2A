@@ -5,26 +5,41 @@ class Cart {
     public function __construct() {
         if (!isset($_SESSION['cart'])) {
             $_SESSION['cart'] = [];
-        }
-    }
-
-    public function add(int $productId, int $quantity = 1): void {
-        if (isset($_SESSION['cart'][$productId])) {
-            $_SESSION['cart'][$productId] += $quantity;
         } else {
-            $_SESSION['cart'][$productId] = $quantity;
+            // Migrace starých dat z košíku (převod z ID => množství na nové pole)
+            foreach ($_SESSION['cart'] as $id => $item) {
+                if (!is_array($item)) {
+                    $quantity = (int)$item;
+                    $productId = (int)$id;
+                    unset($_SESSION['cart'][$id]);
+                    $this->add($productId, $quantity, 'basic');
+                }
+            }
         }
     }
 
-    public function remove(int $productId): void {
-        unset($_SESSION['cart'][$productId]);
+    public function add(int $productId, int $quantity = 1, string $variant = 'basic'): void {
+        $key = $productId . '_' . $variant;
+        if (isset($_SESSION['cart'][$key])) {
+            $_SESSION['cart'][$key]['quantity'] += $quantity;
+        } else {
+            $_SESSION['cart'][$key] = [
+                'id' => $productId,
+                'quantity' => $quantity,
+                'variant' => $variant
+            ];
+        }
     }
 
-    public function updateQuantity(int $productId, int $quantity): void {
+    public function remove(string $cartKey): void {
+        unset($_SESSION['cart'][$cartKey]);
+    }
+
+    public function updateQuantity(string $cartKey, int $quantity): void {
         if ($quantity <= 0) {
-            $this->remove($productId);
-        } else {
-            $_SESSION['cart'][$productId] = $quantity;
+            $this->remove($cartKey);
+        } elseif (isset($_SESSION['cart'][$cartKey])) {
+            $_SESSION['cart'][$cartKey]['quantity'] = $quantity;
         }
     }
 
@@ -36,7 +51,11 @@ class Cart {
     }
 
     public function getTotalCount(): int {
-        return array_sum($_SESSION['cart']);
+        $total = 0;
+        foreach ($_SESSION['cart'] as $item) {
+            $total += $item['quantity'];
+        }
+        return $total;
     }
 
     public function clear(): void {

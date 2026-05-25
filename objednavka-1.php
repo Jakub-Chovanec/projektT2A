@@ -70,37 +70,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label>
                 Jméno *
                 <input type="text" name="firstname" value="<?= htmlspecialchars($data['firstname']) ?>" class="<?= isset($errors['firstname']) ? 'input-error' : '' ?>">
-                <?php if (isset($errors['firstname'])): ?><span class="error-message"><?= $errors['firstname'] ?></span><?php endif; ?>
+                <?php if (isset($errors['firstname'])): ?><span class="error-message"><?= htmlspecialchars($errors['firstname']) ?></span><?php endif; ?>
             </label>
             <label>
                 Příjmení *
                 <input type="text" name="lastname" value="<?= htmlspecialchars($data['lastname']) ?>" class="<?= isset($errors['lastname']) ? 'input-error' : '' ?>">
-                <?php if (isset($errors['lastname'])): ?><span class="error-message"><?= $errors['lastname'] ?></span><?php endif; ?>
+                <?php if (isset($errors['lastname'])): ?><span class="error-message"><?= htmlspecialchars($errors['lastname']) ?></span><?php endif; ?>
             </label>
             <label>
                 E-mail *
                 <input type="email" name="email" value="<?= htmlspecialchars($data['email']) ?>" class="<?= isset($errors['email']) ? 'input-error' : '' ?>">
-                <?php if (isset($errors['email'])): ?><span class="error-message"><?= $errors['email'] ?></span><?php endif; ?>
+                <?php if (isset($errors['email'])): ?><span class="error-message"><?= htmlspecialchars($errors['email']) ?></span><?php endif; ?>
             </label>
             <label>
                 Telefon *
                 <input type="text" name="phone" value="<?= htmlspecialchars($data['phone']) ?>" class="<?= isset($errors['phone']) ? 'input-error' : '' ?>">
-                <?php if (isset($errors['phone'])): ?><span class="error-message"><?= $errors['phone'] ?></span><?php endif; ?>
+                <?php if (isset($errors['phone'])): ?><span class="error-message"><?= htmlspecialchars($errors['phone']) ?></span><?php endif; ?>
             </label>
             <label>
                 Ulice a č. p. *
                 <input type="text" name="street" value="<?= htmlspecialchars($data['street']) ?>" class="<?= isset($errors['street']) ? 'input-error' : '' ?>">
-                <?php if (isset($errors['street'])): ?><span class="error-message"><?= $errors['street'] ?></span><?php endif; ?>
+                <?php if (isset($errors['street'])): ?><span class="error-message"><?= htmlspecialchars($errors['street']) ?></span><?php endif; ?>
             </label>
             <label>
                 Město *
                 <input type="text" name="city" value="<?= htmlspecialchars($data['city']) ?>" class="<?= isset($errors['city']) ? 'input-error' : '' ?>">
-                <?php if (isset($errors['city'])): ?><span class="error-message"><?= $errors['city'] ?></span><?php endif; ?>
+                <?php if (isset($errors['city'])): ?><span class="error-message"><?= htmlspecialchars($errors['city']) ?></span><?php endif; ?>
             </label>
             <label>
                 PSČ *
                 <input type="text" name="zip" value="<?= htmlspecialchars($data['zip']) ?>" placeholder="123 45" class="<?= isset($errors['zip']) ? 'input-error' : '' ?>">
-                <?php if (isset($errors['zip'])): ?><span class="error-message"><?= $errors['zip'] ?></span><?php endif; ?>
+                <?php if (isset($errors['zip'])): ?><span class="error-message"><?= htmlspecialchars($errors['zip']) ?></span><?php endif; ?>
             </label>
             <label class="full-width">
                 Poznámka k objednávce

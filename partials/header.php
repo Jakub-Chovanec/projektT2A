@@ -15,13 +15,17 @@
 </header>
 
 <nav class="nav">
-    <a href="index.php">Domů</a>
-    <a href="kontakt.php">Kontakt</a>
-    <a href="O-nas.php">O nás</a>
-    <a href="kosik.php" class="nav-link-kosik">
-    Košík (<?= $cart->getTotalCount() ?>)
-</a>
-
+    <div class="nav-links">
+        <a href="index.php">Domů</a>
+        <a href="kontakt.php">Kontakt</a>
+        <a href="O-nas.php">O nás</a>
+        <a href="kosik.php" class="nav-link-kosik">
+            Košík (<?= $cart->getTotalCount() ?>)
+        </a>
+    </div>
+    
+    <form action="vyhledavani.php" method="GET" class="search-form">
+        <input type="text" name="q" placeholder="Hledat techniku..." value="<?= htmlspecialchars($_GET['q'] ?? '') ?>">
+        <button type="submit">Hledat</button>
+    </form>
 </nav>
-</body>
-</html>

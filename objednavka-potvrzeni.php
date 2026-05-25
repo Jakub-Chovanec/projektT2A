@@ -20,39 +20,59 @@ $userData = $_SESSION['checkout_data'];
 $shipping = $shippingRepo->getById((int)$_SESSION['shipping_id']);
 $payment = $paymentRepo->getById((int)$_SESSION['payment_id']);
 
-// 1. Uložení zákazníka
-$stmt = $pdo->prepare("INSERT INTO customers (firstname, lastname, email, phone, street, city, zip) VALUES (?, ?, ?, ?, ?, ?, ?)");
-$stmt->execute([
-    $userData['firstname'], $userData['lastname'], $userData['email'], 
-    $userData['phone'], $userData['street'], $userData['city'], $userData['zip']
-]);
-$customerId = (int)$pdo->lastInsertId();
+try {
+    // Spuštění transakce - vše se uloží najednou, nebo nic
+    $pdo->beginTransaction();
 
-// 2. Výpočet celkové ceny pro objednávku
-$cartItems = $cart->getItems();
-$subtotal = 0;
-$itemsToSave = [];
+    // 1. Uložení zákazníka
+    $stmt = $pdo->prepare("INSERT INTO customers (firstname, lastname, email, phone, street, city, zip) 
+                           VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt->execute([
+        $userData['firstname'], $userData['lastname'], $userData['email'], 
+        $userData['phone'], $userData['street'], $userData['city'], $userData['zip']
+    ]);
+    $customerId = (int)$pdo->lastInsertId();
 
-foreach ($cartItems as $id => $quantity) {
-    $product = $productRepo->getById($id);
-    if ($product) {
-        $subtotal += $product->price * $quantity;
-        $itemsToSave[] = ['id' => $id, 'quantity' => $quantity, 'price' => $product->price];
+    // 2. Výpočet celkové ceny pro objednávku
+    $cartItems = $cart->getItems();
+    $subtotal = 0;
+    $itemsToSave = [];
+
+    foreach ($cartItems as $key => $item) {
+        $product = $productRepo->getById($item['id']);
+        if ($product) {
+            $pricePerUnit = $product->price;
+            if ($item['variant'] === 'premium') {
+                $pricePerUnit += 2000;
+            }
+            $subtotal += $pricePerUnit * $item['quantity'];
+            $itemsToSave[] = ['id' => $item['id'], 'quantity' => $item['quantity'], 'price' => $pricePerUnit];
+        }
     }
-}
-$totalPrice = $subtotal + ($shipping?->price ?? 0) + ($payment?->price ?? 0);
 
-// 3. Uložení objednávky
-$stmt = $pdo->prepare("INSERT INTO orders (customer_id, shipping_method_id, payment_method_id, total_price, note) VALUES (?, ?, ?, ?, ?)");
-$stmt->execute([
-    $customerId, $_SESSION['shipping_id'], $_SESSION['payment_id'], $totalPrice, $userData['note']
-]);
-$orderId = (int)$pdo->lastInsertId();
+    $totalPrice = $subtotal + ($shipping?->price ?? 0) + ($payment?->price ?? 0);
 
-// 4. Uložení položek objednávky
-$stmt = $pdo->prepare("INSERT INTO order_items (order_id, product_id, quantity, price) VALUES (?, ?, ?, ?)");
-foreach ($itemsToSave as $item) {
-    $stmt->execute([$orderId, $item['id'], $item['quantity'], $item['price']]);
+    // 3. Uložení objednávky
+    $stmt = $pdo->prepare("INSERT INTO orders (customer_id, shipping_method_id, payment_method_id, total_price, note) 
+                           VALUES (?, ?, ?, ?, ?)");
+    $stmt->execute([
+        $customerId, $_SESSION['shipping_id'], $_SESSION['payment_id'], $totalPrice, $userData['note']
+    ]);
+    $orderId = (int)$pdo->lastInsertId();
+
+    // 4. Uložení položek objednávky
+    $stmt = $pdo->prepare("INSERT INTO order_items (order_id, product_id, quantity, price) VALUES (?, ?, ?, ?)");
+    foreach ($itemsToSave as $item) {
+        $stmt->execute([$orderId, $item['id'], $item['quantity'], $item['price']]);
+    }
+
+    // Potvrzení všech změn v DB
+    $pdo->commit();
+
+} catch (Exception $e) {
+    // Pokud se cokoli nepovede, vrátíme změny zpět
+    $pdo->rollBack();
+    die("Chyba při ukládání objednávky: " . $e->getMessage());
 }
 
 // 5. Vyprázdnění košíku a smazání session dat

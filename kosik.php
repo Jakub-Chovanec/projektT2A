@@ -10,14 +10,16 @@ $productRepo = new ProductRepository($pdo);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = $_POST['action'] ?? '';
     $productId = (int)($_POST['product_id'] ?? 0);
+    $cartKey = $_POST['cart_key'] ?? '';
+    $variant = $_POST['variant'] ?? 'basic';
 
     if ($action === 'add' && $productId > 0) {
-        $cart->add($productId);
-    } elseif ($action === 'remove' && $productId > 0) {
-        $cart->remove($productId);
-    } elseif ($action === 'update' && $productId > 0) {
+        $cart->add($productId, 1, $variant);
+    } elseif ($action === 'remove' && $cartKey !== '') {
+        $cart->remove($cartKey);
+    } elseif ($action === 'update' && $cartKey !== '') {
         $quantity = (int)($_POST['quantity'] ?? 1);
-        $cart->updateQuantity($productId, $quantity);
+        $cart->updateQuantity($cartKey, $quantity);
     }
 
     // Přesměrování zpět na košík (vypořádání se s PRG)
@@ -30,15 +32,22 @@ $cartItems = $cart->getItems();
 $productsInCart = [];
 $totalPrice = 0;
 
-foreach ($cartItems as $id => $quantity) {
-    $product = $productRepo->getById($id);
+foreach ($cartItems as $key => $item) {
+    $product = $productRepo->getById($item['id']);
     if ($product) {
+        $pricePerUnit = $product->price;
+        if ($item['variant'] === 'premium') {
+            $pricePerUnit += 2000;
+        }
         $productsInCart[] = [
             'product' => $product,
-            'quantity' => $quantity,
-            'subtotal' => $product->price * $quantity
+            'quantity' => $item['quantity'],
+            'variant' => $item['variant'],
+            'cart_key' => $key,
+            'price_per_unit' => $pricePerUnit,
+            'subtotal' => $pricePerUnit * $item['quantity']
         ];
-        $totalPrice += $product->price * $quantity;
+        $totalPrice += $pricePerUnit * $item['quantity'];
     }
 }
 ?>
@@ -64,14 +73,15 @@ foreach ($cartItems as $id => $quantity) {
                             <img src="<?= htmlspecialchars($item['product']->image) ?>" alt="">
                             <div>
                                 <h3><?= htmlspecialchars($item['product']->name) ?></h3>
-                                <p><?= number_format($item['product']->price, 0, ',', ' ') ?> Kč / ks</p>
+                                <p style="font-size: 0.9rem; color: #666;"><?= $item['variant'] === 'premium' ? 'Premium set s brašnou (+ 2 000 Kč)' : 'Základní balení' ?></p>
+                                <p><?= number_format($item['price_per_unit'], 0, ',', ' ') ?> Kč / ks</p>
                             </div>
                         </div>
 
                         <div class="cart-item-controls">
                             <form action="kosik.php" method="POST">
                                 <input type="hidden" name="action" value="update">
-                                <input type="hidden" name="product_id" value="<?= $item['product']->id ?>">
+                                <input type="hidden" name="cart_key" value="<?= $item['cart_key'] ?>">
                                 <input type="number" name="quantity" value="<?= $item['quantity'] ?>" min="1" onchange="this.form.submit()" class="quantity-input">
                             </form>
                             
@@ -79,7 +89,7 @@ foreach ($cartItems as $id => $quantity) {
 
                             <form action="kosik.php" method="POST">
                                 <input type="hidden" name="action" value="remove">
-                                <input type="hidden" name="product_id" value="<?= $item['product']->id ?>">
+                                <input type="hidden" name="cart_key" value="<?= $item['cart_key'] ?>">
                                 <button type="submit" class="remove-btn">✕</button>
                             </form>
                         </div>

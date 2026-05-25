@@ -284,3 +284,69 @@ button.btn-next {
     cursor: pointer;
     margin: 20px 0;
 }
+
+/* Styl pro navigaci a vyhledávací panel */
+.nav {
+    display: flex;
+    flex-direction: column; /* Položí vyhledávání pod odkazy */
+    align-items: center;
+    gap: 15px;
+    padding: 15px 0;
+    background-color: #f9f9f9; /* Jemné pozadí pro odlišení nav baru */
+    border-bottom: 1px solid #eee;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: #000;
+    text-decoration: underline;
+}
+
+/* Styl search baru */
+.search-form {
+    display: flex;
+    width: 100%;
+    max-width: 500px; /* Aby nebyl přes celou obrazovku */
+    margin: 0 auto;
+}
+
+.search-form input {
+    flex: 1;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-right: none;
+    border-radius: 4px 0 0 4px;
+    font-size: 0.9rem;
+    outline: none;
+}
+
+.search-form input:focus {
+    border-color: #333;
+}
+
+.search-form button {
+    padding: 10px 20px;
+    background-color: #1a1a1a; /* Tmavá barva ladící k foto-technice */
+    color: white;
+    border: 1px solid #1a1a1a;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.search-form button:hover {
+    background-color: #444;
+}

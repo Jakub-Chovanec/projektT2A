@@ -27,11 +27,15 @@ $cartItems = $cart->getItems();
 $productsInOrder = [];
 $subtotal = 0;
 
-foreach ($cartItems as $id => $quantity) {
-    $product = $productRepo->getById($id);
+foreach ($cartItems as $key => $item) {
+    $product = $productRepo->getById($item['id']);
     if ($product) {
-        $subtotal += $product->price * $quantity;
-        $productsInOrder[] = ['product' => $product, 'quantity' => $quantity];
+        $pricePerUnit = $product->price;
+        if ($item['variant'] === 'premium') {
+            $pricePerUnit += 2000;
+        }
+        $subtotal += $pricePerUnit * $item['quantity'];
+        $productsInOrder[] = ['product' => $product, 'quantity' => $item['quantity'], 'variant' => $item['variant'], 'price' => $pricePerUnit];
     }
 }
 
@@ -88,9 +92,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="cart-item">
                     <div class="cart-item-details">
                         <img src="<?= htmlspecialchars($item['product']->image) ?>" alt="" style="width: 50px;">
-                        <span><?= htmlspecialchars($item['product']->name) ?> (<?= $item['quantity'] ?> ks)</span>
+                        <span><?= htmlspecialchars($item['product']->name) ?> (<?= $item['quantity'] ?> ks) - 
+                        <?= $item['variant'] === 'premium' ? 'Premium set' : 'Základ' ?></span>
                     </div>
-                    <span class="cart-item-price"><?= number_format($item['product']->price * $item['quantity'], 0, ',', ' ') ?> Kč</span>
+                    <span class="cart-item-price"><?= number_format($item['price'] * $item['quantity'], 0, ',', ' ') ?> Kč</span>
                 </div>
             <?php endforeach; ?>
             
