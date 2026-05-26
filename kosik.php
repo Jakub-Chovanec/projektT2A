@@ -73,7 +73,7 @@ foreach ($cartItems as $key => $item) {
                             <img src="<?= htmlspecialchars($item['product']->image) ?>" alt="">
                             <div>
                                 <h3><?= htmlspecialchars($item['product']->name) ?></h3>
-                                <p style="font-size: 0.9rem; color: #666;"><?= $item['variant'] === 'premium' ? 'Premium set s brašnou (+ 2 000 Kč)' : 'Základní balení' ?></p>
+                                <p class="cart-item-variant"><?= $item['variant'] === 'premium' ? 'Premium set s brašnou (+ 2 000 Kč)' : 'Základní balení' ?></p>
                                 <p><?= number_format($item['price_per_unit'], 0, ',', ' ') ?> Kč / ks</p>
                             </div>
                         </div>

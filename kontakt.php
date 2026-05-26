@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
         <?php if ($success): ?>
-            <div class="alert alert-success" style="color: green; margin: 1rem 0;">
+            <div class="alert alert-success">
                 <strong>Zpráva byla úspěšně odeslána!</strong>
             </div>
         <?php endif; ?>

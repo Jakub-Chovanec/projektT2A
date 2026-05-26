@@ -81,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <p><strong>Doprava:</strong> <?= htmlspecialchars($shipping?->name ?? '') ?> (<?= $shipping?->price ?? 0 ?> Kč)</p>
                 <p><strong>Platba:</strong> <?= htmlspecialchars($payment?->name ?? '') ?> (<?= $payment?->price ?? 0 ?> Kč)</p>
                 <?php if (!empty($userData['note'])): ?>
-                    <p style="margin-top: 10px;"><strong>Poznámka:</strong><br><?= nl2br(htmlspecialchars($userData['note'])) ?></p>
+                    <p class="summary-note"><strong>Poznámka:</strong><br><?= nl2br(htmlspecialchars($userData['note'])) ?></p>
                 <?php endif; ?>
             </div>
         </div>
@@ -91,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php foreach ($productsInOrder as $item): ?>
                 <div class="cart-item">
                     <div class="cart-item-details">
-                        <img src="<?= htmlspecialchars($item['product']->image) ?>" alt="" style="width: 50px;">
+                        <img src="<?= htmlspecialchars($item['product']->image) ?>" alt="" class="summary-item-img">
                         <span><?= htmlspecialchars($item['product']->name) ?> (<?= $item['quantity'] ?> ks) - 
                         <?= $item['variant'] === 'premium' ? 'Premium set' : 'Základ' ?></span>
                     </div>
@@ -99,10 +99,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
             <?php endforeach; ?>
             
-            <div style="text-align: right; margin-top: 20px; font-size: 1.2rem;">
+            <div class="summary-total-block">
                 <p>Mezisoučet: <?= number_format($subtotal, 0, ',', ' ') ?> Kč</p>
                 <p>Doprava a platba: <?= number_format(($shipping?->price ?? 0) + ($payment?->price ?? 0), 0, ',', ' ') ?> Kč</p>
-                <p style="font-size: 1.5rem; font-weight: bold; margin-top: 10px;">Celkem: <?= number_format($totalPrice, 0, ',', ' ') ?> Kč</p>
+                <p class="total-price-large">Celkem: <?= number_format($totalPrice, 0, ',', ' ') ?> Kč</p>
             </div>
         </div>
 

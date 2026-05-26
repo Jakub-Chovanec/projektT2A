@@ -350,3 +350,41 @@ button.btn-next {
 .search-form button:hover {
     background-color: #444;
 }
+
+/* Nově přidané styly z inline atributů */
+.alert-success {
+    color: green;
+    margin: 1rem 0;
+}
+
+.cart-item-variant {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.summary-note {
+    margin-top: 10px;
+}
+
+.summary-item-img {
+    width: 50px;
+}
+
+.summary-total-block {
+    text-align: right;
+    margin-top: 20px;
+    font-size: 1.2rem;
+}
+
+.total-price-large {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.success-icon {
+    font-size: 5rem;
+    color: #4CAF50;
+    text-align: center;
+    display: block;
+}

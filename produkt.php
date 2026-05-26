@@ -62,9 +62,9 @@ if ($product === null) {
             </ul>
             <br>
 
-            <div class="product-variants" style="margin-bottom: 20px;">
-                <label for="variant" style="display: block; margin-bottom: 8px; font-weight: bold;">Vyberte variantu:</label>
-                <select name="variant" id="variant" style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-family: inherit; cursor: pointer;">
+            <div class="product-variants">
+                <label for="variant">Vyberte variantu:</label>
+                <select name="variant" id="variant">
                     <option value="basic">Základní balení</option>
                     <option value="premium">Premium set s brašnou (+ 2 000 Kč)</option>
                 </select>

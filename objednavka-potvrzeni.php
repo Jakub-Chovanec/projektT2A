@@ -85,8 +85,8 @@ unset($_SESSION['payment_id']);
 <?php require __DIR__ . '/partials/header.php'; ?>
 
 <main class="main centered-content">
-    <section class="order-confirmation" style="padding: 5rem 1rem;">
-        <div style="font-size: 5rem; color: #4CAF50;">✓</div>
+    <section class="order-confirmation">
+        <div class="success-icon">✓</div>
         <h1>Děkujeme za vaši objednávku!</h1>
         <p>Vaše objednávka byla úspěšně přijata a má číslo: <strong>#<?= $orderId ?></strong></p>
         <p>Potvrzení jsme odeslali na e-mail: <?= htmlspecialchars($userData['email']) ?></p>
