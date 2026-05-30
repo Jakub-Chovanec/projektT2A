@@ -19,7 +19,6 @@ if (!$category) {
 $productRepo = new ProductRepository($pdo);
 $products = $productRepo->getByCategory($category->id, $brand);
 
-// Dynamický nadpis podle toho, jestli filtrujeme i značku
 $title = mb_strtoupper($category->name);
 if ($brand) {
     $title = mb_strtoupper($brand) . ' ' . $title;

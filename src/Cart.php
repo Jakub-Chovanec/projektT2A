@@ -6,7 +6,6 @@ class Cart {
         if (!isset($_SESSION['cart'])) {
             $_SESSION['cart'] = [];
         } else {
-            // Migrace starých dat z košíku (převod z ID => množství na nové pole)
             foreach ($_SESSION['cart'] as $id => $item) {
                 if (!is_array($item)) {
                     $quantity = (int)$item;

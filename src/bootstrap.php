@@ -4,7 +4,7 @@ declare(strict_types=1);
 // Zahájení session pro košík
 session_start();
 
-// nastavení chyb - musí být před připojením, aby zachytilo i chyby v něm
+
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 

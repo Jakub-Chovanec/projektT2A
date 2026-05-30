@@ -10,8 +10,6 @@ $productRepo = new ProductRepository($pdo);
 $results = [];
 
 if (mb_strlen($query) >= 3) {
-    // Místo SELECT * vypíšeme konkrétní sloupce, které naše DTO očekává.
-    // Je to bezpečnější a přehlednější.
     $stmt = $pdo->prepare("SELECT id, slug, name, price, image, description, specs, gallery 
                            FROM products WHERE name LIKE ? OR description LIKE ?");
     $stmt->execute(["%$query%", "%$query%"]);

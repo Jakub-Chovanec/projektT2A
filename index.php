@@ -8,9 +8,8 @@ require_once __DIR__ . '/src/bootstrap.php';
 require_once __DIR__ . '/src/Repository/ProductRepository.php';
 require_once __DIR__ . '/src/Repository/CategoryRepository.php';
 
-// Vytvoříme si pomocníka pro produkty a řekneme mu, ať nám dá všechny produkty
 $productRepository = new ProductRepository($pdo);
-$products = $productRepository->getFeatured(4); // Načte jen 4 produkty pro úvodní stranu
+$products = $productRepository->getFeatured(4); 
 
 $categoryRepository = new CategoryRepository($pdo);
 $categories = $categoryRepository->getAll();

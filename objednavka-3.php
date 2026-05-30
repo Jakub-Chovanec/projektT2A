@@ -7,7 +7,7 @@ require_once __DIR__ . '/src/Repository/ShippingMethodRepository.php';
 require_once __DIR__ . '/src/Repository/PaymentMethodRepository.php';
 require_once __DIR__ . '/src/Validator.php';
 
-// Kontrola, zda máme všechna potřebná data v session
+// Kontrola, zda jsou všechna potřebná data v session
 if ($cart->isEmpty() || !isset($_SESSION['checkout_data']) || !isset($_SESSION['shipping_id']) || !isset($_SESSION['payment_id'])) {
     header('Location: kosik.php');
     exit;

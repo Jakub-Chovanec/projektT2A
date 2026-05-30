@@ -6,7 +6,6 @@ require_once __DIR__ . '/src/Repository/ProductRepository.php';
 
 $productRepo = new ProductRepository($pdo);
 
-// Zpracování akcí košíku (POST - princip Post/Redirect/Get)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = $_POST['action'] ?? '';
     $productId = (int)($_POST['product_id'] ?? 0);
@@ -22,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $cart->updateQuantity($cartKey, $quantity);
     }
 
-    // Přesměrování zpět na košík (vypořádání se s PRG)
+    // Přesměrování zpět na košík
     header('Location: kosik.php');
     exit;
 }
@@ -65,10 +64,9 @@ foreach ($cartItems as $key => $item) {
                 <a href="index.php" class="btn-next">Pokračovat v nákupu</a>
             </div>
         <?php else: ?>
-            <div class="cart-container"> <!-- Sem si dej svou třídu pro obal košíku -->
+            <div class="cart-container">
                 <?php foreach ($productsInCart as $item): ?>
                     <div class="cart-item">
-                        <!-- Použij své třídy z HTML fáze (např. .cart-img, .cart-name atd.) -->
                         <div class="cart-item-details">
                             <img src="<?= htmlspecialchars($item['product']->image) ?>" alt="">
                             <div>

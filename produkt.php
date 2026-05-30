@@ -9,7 +9,7 @@ $slug = $_GET['slug'] ?? '';
 
 // Pokud slug chybí, přesměrujeme na 404
 if (empty($slug)) {
-    header('Location: 404.php'); // Předpokládáme, že 404.php existuje
+    header('Location: 404.php');
     exit();
 }
 
@@ -19,13 +19,9 @@ $product = $productRepository->getBySlug($slug);
 
 // Pokud produkt nebyl nalezen, přesměrujeme na 404
 if ($product === null) {
-    header('Location: 404.php'); // Předpokládáme, že 404.php existuje
+    header('Location: 404.php'); 
     exit();
 }
-
-// Zde by se načítaly další detaily jako popis, specifikace, galerie obrázků
-// Pro zjednodušení teď použijeme jen základní data z ProductDTO
-// V budoucnu by ProductDTO mohl být rozšířen o další vlastnosti, nebo by se zde volaly další repozitáře
 
 ?>
 
@@ -39,7 +35,7 @@ if ($product === null) {
             <img src="<?= htmlspecialchars($product->image) ?>" alt="<?= htmlspecialchars($product->name) ?>">
         </div>
 
-        <div class="product-info"> <!-- Opraveno ze section na div -->
+        <div class="product-info">
             <h2><?= htmlspecialchars($product->name) ?></h2>
 
             <section class="product-description">
@@ -51,7 +47,6 @@ if ($product === null) {
 
             <ul class="product-specs">
                 <?php 
-                // Pokud máme specifikace oddělené středníkem, vypíšeme je jako seznam
                 if (!empty($product->specs)) {
                     $specs = explode(';', $product->specs);
                     foreach ($specs as $spec) {

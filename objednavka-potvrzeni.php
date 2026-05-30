@@ -6,7 +6,7 @@ require_once __DIR__ . '/src/Repository/ProductRepository.php';
 require_once __DIR__ . '/src/Repository/ShippingMethodRepository.php';
 require_once __DIR__ . '/src/Repository/PaymentMethodRepository.php';
 
-// Kontrola, zda máme data (aby někdo nepřišel na tuhle stránku přímo)
+// Kontrola, zda máme data
 if (!isset($_SESSION['checkout_data']) || $cart->isEmpty()) {
     header('Location: index.php');
     exit;
@@ -21,7 +21,6 @@ $shipping = $shippingRepo->getById((int)$_SESSION['shipping_id']);
 $payment = $paymentRepo->getById((int)$_SESSION['payment_id']);
 
 try {
-    // Spuštění transakce - vše se uloží najednou, nebo nic
     $pdo->beginTransaction();
 
     // 1. Uložení zákazníka

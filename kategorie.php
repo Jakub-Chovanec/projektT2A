@@ -13,7 +13,7 @@ if (!$category) {
     exit;
 }
 
-// Definice značek a jejich log (v reálném e-shopu by to mohlo být taky v DB)
+// Definice značek a jejich log
 $brands = [
     ['name' => 'Sony', 'logo' => 'Assets/images/sony_logo.png'],
     ['name' => 'Canon', 'logo' => 'Assets/images/Canon_logo.png'],
