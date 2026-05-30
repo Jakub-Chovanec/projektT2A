@@ -32,9 +32,12 @@ require __DIR__ . '/src/bootstrap.php';
             </p>
         </div>
 
+        <div class="centered-content mt-2">
+            <a class="back" href="index.php">← Zpět na přehled</a>
+        </div>
+
     </div>
     
 </main>
-<a class="back" href="index.php">Zpět na přehled</a>
 
 <?php require __DIR__ . '/partials/footer.php'; ?>
