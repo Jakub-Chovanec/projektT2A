@@ -2,8 +2,8 @@
 declare(strict_types=1);
 
 require __DIR__ . '/src/bootstrap.php';
-require_once __DIR__ . '/src/repository/ProductRepository.php';
-require_once __DIR__ . '/src/repository/CategoryRepository.php';
+require_once __DIR__ . '/src/Repository/ProductRepository.php';
+require_once __DIR__ . '/src/Repository/CategoryRepository.php';
 
 $categorySlug = $_GET['slug'] ?? '';
 $brand = $_GET['brand'] ?? null;

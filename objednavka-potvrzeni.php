@@ -2,9 +2,9 @@
 declare(strict_types=1);
 
 require __DIR__ . '/src/bootstrap.php';
-require_once __DIR__ . '/src/repository/ProductRepository.php';
-require_once __DIR__ . '/src/DTO/ShippingMethodRepository.php';
-require_once __DIR__ . '/src/DTO/PaymentMethodRepository.php';
+require_once __DIR__ . '/src/Repository/ProductRepository.php';
+require_once __DIR__ . '/src/Repository/ShippingMethodRepository.php';
+require_once __DIR__ . '/src/Repository/PaymentMethodRepository.php';
 
 // Kontrola, zda máme data (aby někdo nepřišel na tuhle stránku přímo)
 if (!isset($_SESSION['checkout_data']) || $cart->isEmpty()) {

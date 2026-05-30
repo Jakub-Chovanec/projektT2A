@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 require __DIR__ . '/src/bootstrap.php';
-require_once __DIR__ . '/src/repository/ProductRepository.php';
+require_once __DIR__ . '/src/Repository/ProductRepository.php';
 
 $productRepo = new ProductRepository($pdo);
 

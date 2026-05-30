@@ -5,8 +5,8 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 require_once __DIR__ . '/src/bootstrap.php';
-require_once __DIR__ . '/src/repository/ProductRepository.php';
-require_once __DIR__ . '/src/repository/CategoryRepository.php';
+require_once __DIR__ . '/src/Repository/ProductRepository.php';
+require_once __DIR__ . '/src/Repository/CategoryRepository.php';
 
 // Vytvoříme si pomocníka pro produkty a řekneme mu, ať nám dá všechny produkty
 $productRepository = new ProductRepository($pdo);
